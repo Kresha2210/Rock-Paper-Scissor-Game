@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="hero">
+        <p class="eyebrow">Rock Paper Scissors</p>
+        <h1>Play a quick battle with motion.</h1>
+        <p class="subtext">
+          Choose rock, paper, or scissors. The winner gets a clean victory
+          animation, and the losing move visibly shrinks and tilts using CSS
+          transforms.
+        </p>
+      </section>
+
+      <section class="arena">
+        <div class="scoreboard">
+          <div class="score-card">
+            <span>User</span>
+            <strong id="userScore">0</strong>
+          </div>
+          <div class="score-card">
+            <span>Ties</span>
+            <strong id="tieScore">0</strong>
+          </div>
+          <div class="score-card">
+            <span>Computer</span>
+            <strong id="computerScore">0</strong>
+          </div>
+        </div>
+
+        <div class="battlefield">
+          <article class="fighter user-fighter" id="userFighter">
+            <p class="fighter-label">You</p>
+            <div class="choice-icon" id="userChoiceIcon">?</div>
+            <div class="choice-name" id="userChoiceText">Pick a move</div>
+          </article>
+
+          <div class="versus">VS</div>
+
+          <article class="fighter computer-fighter" id="computerFighter">
+            <p class="fighter-label">Computer</p>
+            <div class="choice-icon" id="computerChoiceIcon">?</div>
+            <div class="choice-name" id="computerChoiceText">Waiting</div>
+          </article>
+        </div>
+
+        <div class="status-panel">
+          <p id="resultText">Make your move to start the round.</p>
+          <p id="detailText">
+            Rock beats scissors, scissors beats paper, and paper beats rock.
+          </p>
+        </div>
+
+        <div class="choices" aria-label="Choose your move">
+          <button class="choice-btn rock" data-choice="rock">
+            <span>✊</span>
+            <strong>Rock</strong>
+          </button>
+          <button class="choice-btn paper" data-choice="paper">
+            <span>✋</span>
+            <strong>Paper</strong>
+          </button>
+          <button class="choice-btn scissors" data-choice="scissors">
+            <span>✌</span>
+            <strong>Scissors</strong>
+          </button>
+        </div>
+
+        <button class="reset-btn" id="resetBtn" type="button">
+          Reset score
+        </button>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
