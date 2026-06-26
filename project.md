@@ -13,18 +13,50 @@ Communities frequently face issues such as potholes, water leakages, damaged str
 **JantaMitra AI** is a state-of-the-art, AI-powered civic grievance and resolution platform that bridges the communication and action gap between local citizens and municipal authorities. Built to tackle hyperlocal issues head-on, JantaMitra AI transforms citizens from passive observers into active "Community Heroes" by providing them with powerful reporting tools, while introducing strict transparency rules that keep municipal authorities accountable.
 
 ### **How the Solution Works**
+
+JantaMitra AI operates through two distinct, collaborative workflows: the **Citizen Lifecycle** (reporting, voting, verifying) and the **Authority Lifecycle** (prioritization, resolution, proof submission).
+
+---
+
+### **1. Citizen Workflow & Step-by-Step Lifecycle**
+
+The citizen's journey centers on active community vigilance, reporting local complaints, voting on nearby problems, and double-checking resolutions.
+
 ```mermaid
 graph TD
-    A[Citizen reports issue with photo & description] --> B[HTML5 Geolocation captures coordinates]
-    B --> C[Google Gemini API translates, categorizes & assesses risk]
-    C --> D[Issue published to Live Grievance Feed]
-    D --> E[Nearby Citizens upvote & validate importance]
-    E --> F[Authority logs in and views prioritized dashboard]
-    F --> G[Authority works on issue & uploads resolution proof]
-    G --> H[Status updates to 'Waiting Verification']
-    H --> I{Citizen Verification Voting}
-    I -- 5 Upvotes --> J[Status: Resolved / JantaPoints rewarded]
-    I -- 5 Downvotes --> K[Reopened to 'In Progress' for rework]
+    C1[1. Authenticate via OTP] --> C2[2. Capture Photo & Describe Issue]
+    C2 --> C3["3. GPS Captures Coordinates & Auto-fills Address"]
+    C3 --> C4[4. AI Translates, Categorizes & Scores Issue]
+    C4 --> C5[5. Publish to Local Grievance Feed]
+    C5 --> C6[6. Upvote Nearby Issues to Alert Officials]
+    C6 --> C7{"7. In-Person Resolution Verification"}
+    C7 -- "Upvote (Confirm Fix)" --> C8[8. Ticket Closed & Earn JantaPoints]
+    C7 -- "Downvote (Reopen Issue)" --> C9[8. Reopen Ticket for Authority Rework]
+```
+
+#### **Step-by-Step Citizen Journey:**
+1. **SMS OTP Sign In:** Citizen registers/logs in securely with their mobile number and a 4-digit OTP code (received via Twilio or console fallback).
+2. **Issue Capture:** Citizen captures visual evidence (photo of pothole, garbage dump, etc.) and writes a brief description in their local language.
+3. **Geo-Location Locking:** The system grabs GPS coordinates via HTML5 Geolocation and queries OpenStreetMap Nominatim API to auto-populate the exact ward, street, and pincode.
+4. **AI Parsing:** Gemini translates non-English text to English, categorizes the issue, and assesses safety risk and priority levels.
+5. **Community Prioritization:** The issue goes live. Fellow citizens explore nearby issues in their feed and upvote them to raise urgency.
+6. **Physical Verification Double-Check:** Once marked as fixed, neighboring citizens physically check the site and vote. 5 upvotes close the issue, awarding **JantaPoints** to the reporter. 5 downvotes send the issue back to the authority's queue.
+
+---
+
+### **2. Authority Workflow & Step-by-Step Lifecycle**
+
+The authority's journey focuses on tracking incoming problems, prioritizing based on community demand, locating issues on-site, and uploading proof of resolution.
+
+```mermaid
+graph TD
+    A1[1. Log in via Government ID] --> A2[2. Access Metrics Dashboard]
+    A2 --> A3[3. Sort Queue by Upvotes & AI Priority]
+    A3 --> A4[4. Navigate to Site via Google Maps]
+    A4 --> A5[5. Update Status: Accept/Reject/In Progress]
+    A5 --> A6[6. Perform On-Site Physical Repair]
+    A6 --> A7[7. Upload Resolution Photo & Fix Notes]
+    A7 --> A8[8. Await Citizen Double-Check Verification]
 ```
 
 ### **Core Value Propositions**
